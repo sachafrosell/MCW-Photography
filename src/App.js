@@ -1,28 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/navbar';
+import NewNav from './components/newNav'
+import ImageContainer from './components/imagecontainer';
+import Gallery from './components/gallery';
+import Nav from './components/nav';
+import Menu from './components/menu';
+import Popup from "reactjs-popup";
+import Burger from './components/burger';
+import ThisImage from './components/image';
+import { connect } from 'react-redux';
+
 
 class App extends Component {
+
+
+  contentStyle = {
+    background: "rgba(255,255,255,0",
+    width: "80%",
+    border: "none"
+  };
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {window.scrollTo(0, 0)}
+        <Nav />
+        <Popup
+          modal
+          overlayStyle={{ background: "rgba(255,255,255,0.98" }}
+          contentStyle={this.contentStyle}
+          closeOnDocumentClick={false}
+          trigger={open => <Burger open={open} />}
+        >
+          {close => <Menu close={close} />}
+        </Popup>
+        <Gallery />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+export default connect(mapStateToProps)(App);
