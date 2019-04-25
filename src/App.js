@@ -9,6 +9,7 @@ import Menu from './components/menu';
 import Popup from "reactjs-popup";
 import Burger from './components/burger';
 import ThisImage from './components/image';
+import Cloud from './components/cloud';
 import { connect } from 'react-redux';
 
 
@@ -37,6 +38,7 @@ class App extends Component {
           {close => <Menu close={close} />}
         </Popup>
         <Gallery />
+        <Cloud />
       </div>
     );
   }

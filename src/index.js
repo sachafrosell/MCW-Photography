@@ -18,8 +18,8 @@ const tanzania = importAll(require.context('./assets/photos/tanzania', false, /\
 const allPhotos = importAll(require.context('./assets/photos/allPhotos', false, /\.(png|jpe?g|svg)$/));
 
 const initialState = {
-  images: allPhotos,
-  page: "allPhotos",
+  images: tanzania,
+  page: "tanzania",
   zoom: "false",
   zoomId: "",
   zoomImg: ""
@@ -55,11 +55,17 @@ function reducer(state=initialState, action) {
         ...state,
         zoomId: action.payload.zoomId
       }
-    default:
+    case "HOME":
       return {
         ...state,
         images: allPhotos,
         page: "allPhotos"
+      }
+    default:
+      return {
+        ...state,
+        images: tanzania,
+        page: "tanzania"
       }
   }
   return state;

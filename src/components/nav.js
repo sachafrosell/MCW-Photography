@@ -31,7 +31,7 @@ class Nav extends Component {
         }
       })
     } else if (e.target.dataset.id === "home") {
-      store.dispatch({type: "home"})
+      store.dispatch({type: "HOME"})
       window.scrollTo(0, 0);
     }
   }
@@ -52,16 +52,17 @@ class Nav extends Component {
     return (
       <nav className={this.state.scroll > this.state.top ? "fixed-nav" : ""}
         style={{
-          fontFamily: "Abril Fatface",
-          fontSize: "25px",
+          fontFamily: "abril",
+          fontWeight: "600",
+          fontSize: "22px",
           zIndex: "1",
           opacity: "0.9",
           paddingTop: "4px",
           paddingLeft: "5px",
           paddingBottom: "5px"
         }}>
-        <ul >
-          <li style={{ opacity: "1"}} data-id={"home"} onClick={(e) => this.handleClick(e)}>MCW Photography</li>
+        <ul className={"title"}>
+          <li style={{ opacity: "1"}} data-id={"home"} onClick={(e) => this.handleClick(e)}>Morgan Cronin-Webb Photography.</li>
         </ul>
       </nav>
     )
