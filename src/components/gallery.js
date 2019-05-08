@@ -18,7 +18,8 @@ class Gallery extends React.Component {
       style: {
         opacity: '1',
         transition: 'opacity 200ms ease-in-out'
-      }
+      },
+      images: [],
     }
   }
 
@@ -27,6 +28,12 @@ class Gallery extends React.Component {
   targetElement = null;
 
   componentDidMount() {
+    fetch("http://localhost:3000/api/v1/images")
+    .then(r => r.json())
+    .then(json => this.setState({
+      ...this.state,
+      images: json
+    }, () => console.log(this.state)))
     window.scrollTo(0, 0)
     document.addEventListener("keydown", this._handleKeyDown)
   }
@@ -42,15 +49,14 @@ class Gallery extends React.Component {
       clearAllBodyScrollLocks()
       return images[i].map((image, i) =>
         <Grid.Column key={i}>
-
           <ThisImage key={i} image={image} />
-
         </Grid.Column>)
   }
 
   calculateHowManyColumns = () => {
     let rArr = [];
-    let images = Object.values(this.props.images)
+    let images = this.state.images.filter(image => image.album_title == this.props.page).map(image => image.url)
+    console.log(this.state.images)
     let numberOfImagesPerColumn = Math.round(images.length / 3)
     for(let i = 0; i < 3; i++) {
       rArr.push(images.splice(0, numberOfImagesPerColumn))

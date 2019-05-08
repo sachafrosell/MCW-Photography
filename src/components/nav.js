@@ -62,7 +62,7 @@ class Nav extends Component {
           paddingBottom: "5px"
         }}>
         <ul className={"title"}>
-          <li style={{ opacity: "1"}} data-id={"home"} onClick={(e) => this.handleClick(e)}>Morgan Cronin-Webb Photography.</li>
+          <li style={{ opacity: "1"}} data-id={"home"} onClick={(e) => this.handleClick(e)}>M/C/W</li>
         </ul>
       </nav>
     )

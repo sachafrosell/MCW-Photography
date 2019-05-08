@@ -77,8 +77,6 @@ class thisImage extends React.Component {
           </Popup>
         </VisibilitySensor>
       </div>
-
-
     )
   }
 }
